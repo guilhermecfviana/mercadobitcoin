@@ -1,0 +1,12 @@
+{
+  "name": "guilhermecfviana/mercadobitcoin",
+  "description": "Um cliente PHP não oficial para a trade-api do mercadobitcoin",
+  "keywords": ["bitcoin", "mercadobitcoin", "unofficial"],
+  "license": "MIT",
+  "homepage": "https://github.com/guilhermecfviana/mercadobitcoin/",
+  "autoload": {
+    "psr-4": {
+      "mercadobitcoin\\": "src/"
+    }
+  }
+}

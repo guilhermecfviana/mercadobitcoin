@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+
+ app:
+    build: docker
+    container_name: mercadobitcoin
+    restart: always
+    ports:
+      - '9100:80'
+    environment:
+      - TZ=America/Sao_Paulo
+      - DEBIAN_FRONTEND=noninteractive
+    volumes:
+      - ./:/var/www/html
+      - ./docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
