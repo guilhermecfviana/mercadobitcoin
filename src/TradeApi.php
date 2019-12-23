@@ -28,7 +28,7 @@ class TradeApi extends BaseApi
      * @param $identificador
      * @param $segredo
      * @param string $tapiNonce
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function __construct($identificador, $segredo, $tapiNonce = 'now')
     {
@@ -51,7 +51,7 @@ class TradeApi extends BaseApi
      * Método para comunicação de eventos do sistema relativos à TAPÌ, entre eles bugs, correções, manutenção programada e novas funcionalidades e versões. O conteúdo muda a medida que os eventos ocorrem. A comunicação externa, feita via Twitter e e-mail aos usuários da TAPI, continuará ocorrendo. Entretanto, essa forma permite ao desenvolvedor tratar as informações juntamente ao seus logs ou até mesmo automatizar comportamentos.
      * @param null $level
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function listSystemMessages($level = null){
         try {
@@ -73,7 +73,7 @@ class TradeApi extends BaseApi
     /**
      * Retorna dados da conta, como saldos das moedas (Real, BCash, Bitcoin, Ethereum, Litecoin e XRP), saldos considerando retenção em ordens abertas, quantidades de ordens abertas por moeda digital, limites de saque/transferências das moedas.
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function getAccountInfo(){
         try {
@@ -93,7 +93,7 @@ class TradeApi extends BaseApi
      * @param $coinPair
      * @param $orderId
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function getOrder($coinPair, $orderId){
         try {
@@ -106,7 +106,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -122,7 +122,7 @@ class TradeApi extends BaseApi
      * @param null $fromTimestamp
      * @param null $toTimestamp
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function listOrders($coinPair, $orderType = null, $statusList = null, $hasFills = null, $fromId = null, $toId = null, $fromTimestamp = null, $toTimestamp = null){
         try {
@@ -162,7 +162,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -172,7 +172,7 @@ class TradeApi extends BaseApi
      * @param $coinPair
      * @param null $full
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function listOrderBook($coinPair, $full = null){
         try {
@@ -188,7 +188,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -199,7 +199,7 @@ class TradeApi extends BaseApi
      * @param $quantity
      * @param $limitPrice
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function placeBuyOrder($coinPair, $quantity, $limitPrice){
         try {
@@ -213,7 +213,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -224,7 +224,7 @@ class TradeApi extends BaseApi
      * @param $quantity
      * @param $limitPrice
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function placeSellOrder($coinPair, $quantity, $limitPrice){
         try {
@@ -238,7 +238,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -248,7 +248,7 @@ class TradeApi extends BaseApi
      * @param $coinPair
      * @param $cost
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function placeMarketBuyOrder($coinPair, $cost){
         try {
@@ -261,7 +261,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -271,7 +271,7 @@ class TradeApi extends BaseApi
      * @param $coinPair
      * @param $quantity
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function placeMarketSellOrder($coinPair, $quantity){
         try {
@@ -284,7 +284,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -294,7 +294,7 @@ class TradeApi extends BaseApi
      * @param $coinPair
      * @param $orderId
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function cancelOrder($coinPair, $orderId){
         try {
@@ -307,7 +307,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -317,7 +317,7 @@ class TradeApi extends BaseApi
      * @param $coin
      * @param $withdrawalId
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function getWithdrawal($coin, $withdrawalId){
         try {
@@ -330,7 +330,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
@@ -340,7 +340,7 @@ class TradeApi extends BaseApi
      * @param $coin
      * @param null $description
      * @return bool|string
-     * @throws Exception
+     * @throws TradeApiException
      */
     public function withdrawCoin($coin, $description = null){
         try {
@@ -356,7 +356,7 @@ class TradeApi extends BaseApi
 
             return $this->send();
 
-        } catch (Exception $e){
+        } catch (TradeApiException $e){
             die($e->showErrorMessage());
         }
     }
