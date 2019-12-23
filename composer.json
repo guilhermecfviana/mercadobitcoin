@@ -8,5 +8,7 @@
     "psr-4": {
       "GuilhermeViana\\MercadoBitcoin\\": "src/"
     }
-  }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
