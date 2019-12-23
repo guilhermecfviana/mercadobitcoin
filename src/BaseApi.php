@@ -78,4 +78,23 @@ class BaseApi
         }
     }
 
+    /**
+     * @param string $tapiNonce
+     * @return int|string
+     * @throws Exception
+     */
+    protected function getTapiNonce($tapiNonce = ''){
+        try {
+
+            if($tapiNonce === 'now'){
+                $tapiNonce = time();
+            }
+
+            return $tapiNonce;
+
+        } catch (Exception $e){
+            throw new Exception($e->getMessage());
+        }
+    }
+
 }

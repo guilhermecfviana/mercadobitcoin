@@ -9,16 +9,10 @@ header('Content-Type: application/json');
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-try {
+$options = [
+    'identificador' => '',
+    'segredo' => '',
+];
 
-    $options = [
-        'identificador' => '',
-        'segredo' => '',
-    ];
-
-    $test = new \GuilhermeViana\MercadoBitcoin\TradeApi($options['identificador'], $options['segredo']);
-    echo $test->getOrder($test::BRLLTC, 3);
-
-} catch (Exception $e){
-    print_r($e);
-}
+$test = new \GuilhermeViana\MercadoBitcoin\TradeApi($options['identificador'], $options['segredo']);
+echo $test->getOrder($test::BRLLTC, 3);
