@@ -87,7 +87,7 @@ class BaseApi
         try {
 
             if($tapiNonce === 'now'){
-                $tapiNonce = time();
+                $tapiNonce = time() + 1;
             }
 
             return $tapiNonce;
