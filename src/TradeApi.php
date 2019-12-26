@@ -133,7 +133,7 @@ class TradeApi extends BaseApi
             $this->params['coin_pair'] = $coinPair;
 
             if(!is_null($orderType)){
-                $this->params['order_type'] = $ordeType;
+                $this->params['order_type'] = $orderType;
             }
 
             if(!is_null($statusList)){
