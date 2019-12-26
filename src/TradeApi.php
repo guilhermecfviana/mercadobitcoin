@@ -361,4 +361,27 @@ class TradeApi extends BaseApi
         }
     }
 
+    /**
+     * @param string $tapiNonce
+     * @return int|string
+     * @throws Exception
+     */
+    protected function getTapiNonce($tapiNonce = ''){
+        try {
+
+            if($tapiNonce === 'now'){
+                $tapiNonce = time() + 1;
+            } else {
+                $tapiNonce += 1;
+            }
+
+            $this->tapiNonce = $tapiNonce;
+
+            return $tapiNonce;
+
+        } catch (Exception $e){
+            throw new Exception($e->getMessage());
+        }
+    }
+
 }
